@@ -55,6 +55,18 @@
       +'<div class="dt">12 · 12 · 2026</div><div class="std">'+esc(t.tagline)+'</div>'+dots+'</div>';
   }
 
+  /* trust bar */
+  if($("#trustRow")&&S.trust){
+    var TIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 5 5.6.6-4 4 1 5.4L12 19l-5 3 1-5.4-4-4 5.6-.6z"/></svg>';
+    $("#trustRow").innerHTML=S.trust.map(function(x){return '<div class="trust-item rv"><span class="ti-ic">'+TIC+'</span><div><b>'+esc(x.t)+'</b><small>'+esc(x.d)+'</small></div></div>';}).join("");
+  }
+
+  /* moodboard (duplicate list for seamless marquee) */
+  if($("#moodTrack")&&S.gallery){
+    var imgs=S.gallery.concat(S.gallery).map(function(u){return '<div class="mood-card"><img src="'+u+'" alt="Indian wedding moment" loading="lazy" onerror="this.parentNode.remove()"></div>';}).join("");
+    $("#moodTrack").innerHTML=imgs;
+  }
+
   /* templates + tier filter */
   var TIERS=["All","Basic","Premium","Luxury","Signature","Ultra Premium"];
   function renderTemplates(tier){
@@ -107,7 +119,7 @@
   $("#addonRow").innerHTML=S.addons.map(function(a){return '<div class="addon"><span class="t">'+esc(a.t)+'</span>'+(a.d?'<span class="d">'+esc(a.d)+'</span>':'')+'<b>+ ₹'+esc(a.p)+'</b></div>';}).join("");
 
   /* testimonials */
-  $("#testiGrid").innerHTML=S.testimonials.map(function(t){return '<div class="testi rv"><div class="stars">★★★★★</div><p class="q">“'+esc(t.q)+'”</p><p class="who"><b>'+esc(t.n)+'</b> · '+esc(t.r)+'</p></div>';}).join("");
+  $("#testiGrid").innerHTML=S.testimonials.map(function(t){var ini=(t.n||"?").trim()[0];return '<div class="testi rv"><div class="stars">★★★★★</div><p class="q">“'+esc(t.q)+'”</p><div class="who-row"><span class="avatar">'+esc(ini)+'</span><p class="who"><b>'+esc(t.n)+'</b><br>'+esc(t.r)+'</p></div></div>';}).join("");
 
   /* faq + schema */
   $("#faqList").innerHTML=S.faqs.map(function(f){return '<div class="faq-item"><button class="faq-q">'+esc(f.q)+'<span class="plus">+</span></button><div class="faq-a"><p>'+esc(f.a)+'</p></div></div>';}).join("");

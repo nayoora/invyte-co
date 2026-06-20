@@ -8,6 +8,26 @@ window.SITE = {
   // FREE email leads: get a key at https://web3forms.com and paste it here.
   web3formsKey: "",
 
+  gallery: [
+    "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=60&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&q=60&auto=format&fit=crop"
+  ],
+
+  trust: [
+    { t: "24–48h Delivery", d: "Your invite, ready fast" },
+    { t: "Every Device", d: "Flawless on phone & desktop" },
+    { t: "Unlimited Edits", d: "Tweak till it's perfect" },
+    { t: "Made in India", d: "Crafted with love, locally" }
+  ],
+
   templates: [
     { name: "Shubh Vivah — Royal", tagline: "With Love Story", cat: "Wedding", tier: "Signature", tag: "Bestseller", style: "royal",
       desc: "Ornate maroon & teal with mandala, marigold toran, diyas, scratch-reveal date, love story, timeline, blessings & RSVP.",
