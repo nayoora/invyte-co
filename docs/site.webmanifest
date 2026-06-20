@@ -2,7 +2,7 @@
   "name": "The Invyte Co. — Luxury Digital Wedding Invitations",
   "short_name": "Invyte Co.",
   "description": "Premium animated digital wedding invitations and wedding websites, ready in minutes.",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0b0a12",
   "theme_color": "#0b0a12",
