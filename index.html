@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#b88a44" />
+  <title>Arjun & Ananya — Wedding Invitation</title>
+  <meta name="description" content="A premium digital wedding invitation by The Invyte Co." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="light">
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-monogram"><span id="loaderInitials">A&A</span></div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+
+  <!-- Floating petals layer -->
+  <canvas id="petals" class="petals"></canvas>
+
+  <!-- ============ ENVELOPE OPENING EXPERIENCE ============ -->
+  <section class="envelope-stage" id="envelopeStage">
+    <div class="envelope" id="envelope">
+      <div class="env-flap"></div>
+      <div class="env-body">
+        <div class="env-pocket"></div>
+        <div class="env-letter" id="envLetter">
+          <p class="env-tagline">Together with their families</p>
+          <h1 class="env-names" id="envNames">Arjun &amp; Ananya</h1>
+          <p class="env-sub">request the honour of your presence</p>
+        </div>
+        <div class="wax-seal" id="waxSeal"><span id="sealInitials">A&A</span></div>
+      </div>
+      <p class="env-hint" id="envHint">Tap to open your invitation</p>
+    </div>
+  </section>
+
+  <!-- ============ MAIN SITE ============ -->
+  <main id="site" class="site hidden">
+    <!-- Top nav -->
+    <nav class="nav glass" id="nav">
+      <a href="#hero" class="nav-logo" id="navLogo">A &amp; A</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <ul class="nav-links" id="navLinks"></ul>
+      <div class="nav-tools">
+        <button class="icon-btn" id="sideToggle" title="Bride / Groom side">⚭</button>
+        <button class="icon-btn" id="themeToggle" title="Theme">☾</button>
+        <button class="icon-btn" id="langToggle" title="Language">हिं</button>
+        <button class="icon-btn" id="musicToggle" title="Music">♪</button>
+      </div>
+    </nav>
+
+    <!-- Personalized welcome ribbon -->
+    <div class="welcome-ribbon glass" id="welcomeRibbon" hidden></div>
+
+    <!-- HERO -->
+    <header class="hero" id="hero">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-veil"></div>
+      <div class="hero-inner reveal">
+        <p class="script" id="heroScript">Save the Date</p>
+        <h1 class="hero-names" id="heroNames">Arjun &amp; Ananya</h1>
+        <p class="hero-tagline" id="heroTagline"></p>
+        <p class="hero-date" id="heroDate"></p>
+        <p class="hero-hashtag" id="heroHashtag"></p>
+        <a href="#story" class="btn-gold" id="openInviteBtn">Open Invitation</a>
+      </div>
+      <div class="scroll-cue"><span></span></div>
+    </header>
+
+    <!-- COUPLE STORY -->
+    <section class="section story" id="story" data-section="story">
+      <h2 class="section-title reveal">Our Story</h2>
+      <div class="story-grid">
+        <figure class="story-photo reveal"><img id="storyGroomImg" alt="Groom" loading="lazy" /><figcaption id="groomName">Arjun</figcaption></figure>
+        <div class="story-text reveal">
+          <p class="script">How it began</p>
+          <p id="storyHow"></p>
+        </div>
+        <figure class="story-photo reveal"><img id="storyBrideImg" alt="Bride" loading="lazy" /><figcaption id="brideName">Ananya</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- LOVE TIMELINE -->
+    <section class="section timeline-section" id="timeline" data-section="timeline">
+      <h2 class="section-title reveal">Our Journey</h2>
+      <div class="timeline" id="timeline-list"></div>
+      <div class="proposal glass reveal">
+        <p class="script">The Proposal</p>
+        <p id="proposalText"></p>
+      </div>
+    </section>
+
+    <!-- FAMILY -->
+    <section class="section family" id="family" data-section="family">
+      <h2 class="section-title reveal">With Blessings From</h2>
+      <div class="family-grid">
+        <div class="family-card glass reveal" id="groomFamily"></div>
+        <div class="family-amp">⚭</div>
+        <div class="family-card glass reveal" id="brideFamily"></div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section events" id="events" data-section="events">
+      <h2 class="section-title reveal">Wedding Events</h2>
+      <p class="section-sub reveal">Join us for every celebration</p>
+      <div class="events-grid" id="events-grid"></div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section class="section countdown-section" id="countdown" data-section="countdown">
+      <h2 class="section-title light reveal">Counting Down</h2>
+      <div class="countdown" id="countdown-timer">
+        <div class="cd-box"><span id="cd-days">00</span><label>Days</label></div>
+        <div class="cd-box"><span id="cd-hours">00</span><label>Hours</label></div>
+        <div class="cd-box"><span id="cd-mins">00</span><label>Minutes</label></div>
+        <div class="cd-box"><span id="cd-secs">00</span><label>Seconds</label></div>
+      </div>
+      <a class="btn-gold reveal" id="saveDateBtn">⤓ Save the Date</a>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section gallery" id="gallery" data-section="gallery">
+      <h2 class="section-title reveal">Moments</h2>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section rsvp" id="rsvp" data-section="rsvp">
+      <h2 class="section-title reveal">Will You Join Us?</h2>
+      <p class="section-sub reveal">Kindly respond by sending your wishes</p>
+      <form class="rsvp-form glass reveal" id="rsvpForm">
+        <div class="field"><label>Full Name</label><input name="name" required placeholder="Your name" /></div>
+        <div class="field"><label>Mobile Number</label><input name="phone" required inputmode="tel" placeholder="+91" /></div>
+        <div class="field">
+          <label>Will you attend?</label>
+          <select name="attending" required>
+            <option value="">Select…</option>
+            <option value="Yes, with joy!">Yes, with joy!</option>
+            <option value="Sadly, no">Sadly, no</option>
+          </select>
+        </div>
+        <div class="field"><label>Number of Guests</label><input name="guests" type="number" min="1" value="1" /></div>
+        <div class="field">
+          <label>Food Preference</label>
+          <select name="food">
+            <option>Vegetarian</option><option>Non-Vegetarian</option><option>Jain</option><option>Vegan</option>
+          </select>
+        </div>
+        <div class="field full"><label>Message for the Couple</label><textarea name="message" rows="3" placeholder="Your blessings…"></textarea></div>
+        <button type="submit" class="btn-gold full">Send RSVP</button>
+        <p class="rsvp-thanks" id="rsvpThanks" hidden>Thank you! Your response is received. ❤️</p>
+      </form>
+    </section>
+
+    <!-- GUEST WISHES / MEMORY WALL -->
+    <section class="section wishes" id="wishes" data-section="wishes">
+      <h2 class="section-title reveal">Guest Wishes</h2>
+      <form class="wish-form glass reveal" id="wishForm">
+        <input name="name" placeholder="Your name" required />
+        <input name="text" placeholder="Leave a wish…" required />
+        <button class="btn-gold" type="submit">Post</button>
+      </form>
+      <div class="wishes-wall" id="wishes-wall"></div>
+    </section>
+
+    <!-- GIFT / DIGITAL SHAGUN -->
+    <section class="section gift" id="gift" data-section="gift">
+      <h2 class="section-title reveal">Digital Shagun</h2>
+      <div class="gift-card glass reveal">
+        <p id="giftNote"></p>
+        <div class="gift-upi"><span>UPI</span><strong id="giftUpi"></strong></div>
+        <div class="gift-qr" id="giftQr"></div>
+        <button class="btn-gold" id="copyUpiBtn">Copy UPI ID</button>
+      </div>
+    </section>
+
+    <!-- LIVE STREAM -->
+    <section class="section livestream" id="livestream" data-section="livestream">
+      <h2 class="section-title reveal">Watch Live</h2>
+      <div class="live-card glass reveal">
+        <p id="liveNote"></p>
+        <a class="btn-gold" id="liveBtn" target="_blank" rel="noopener">Join the Live Stream</a>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact" data-section="contact">
+      <h2 class="section-title reveal">Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-card glass reveal"><span>Groom's Family</span><a id="groomPhone"></a></div>
+        <div class="contact-card glass reveal"><span>Bride's Family</span><a id="bridePhone"></a></div>
+      </div>
+      <a class="btn-wa reveal" id="waShare" target="_blank" rel="noopener">Share on WhatsApp</a>
+    </section>
+
+    <footer class="footer">
+      <p class="footer-names" id="footerNames">Arjun &amp; Ananya</p>
+      <p class="footer-hash" id="footerHash"></p>
+      <p class="footer-brand">Crafted with ❤️ by <a href="admin.html">The Invyte Co.</a></p>
+    </footer>
+  </main>
+
+  <!-- Floating action: AI assistant -->
+  <button class="ai-fab" id="aiFab" title="Ask the wedding assistant">💬</button>
+  <div class="ai-panel glass" id="aiPanel" hidden>
+    <div class="ai-head"><span>Wedding Assistant</span><button id="aiClose">✕</button></div>
+    <div class="ai-log" id="aiLog"></div>
+    <div class="ai-chips" id="aiChips"></div>
+    <form class="ai-input" id="aiForm"><input id="aiText" placeholder="Ask about venue, time, dress code…" /><button class="btn-gold">Ask</button></form>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bgMusic" loop preload="none"></audio>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden><img id="lightboxImg" alt="" /><button id="lightboxClose">✕</button></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <script src="config.js"></script>
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
