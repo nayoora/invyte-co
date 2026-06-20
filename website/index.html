@@ -197,12 +197,12 @@
     <p class="sub rv d2">Tell us your date — we'll send a personalised preview on WhatsApp within hours.</p>
     <div class="order-card rv d2">
       <form id="orderForm">
-        <input name="name" placeholder="Your name" required />
+        <input name="name" placeholder="Your name" aria-label="Your name" required />
         <div class="two">
-          <input name="phone" placeholder="WhatsApp number" required />
-          <input name="date" type="date" required />
+          <input name="phone" placeholder="WhatsApp number" aria-label="WhatsApp number" inputmode="tel" required />
+          <input name="date" type="date" aria-label="Wedding date" required />
         </div>
-        <select name="plan">
+        <select name="plan" aria-label="Choose a plan">
           <option value="">Choose a plan (optional)</option>
           <option>Basic — ₹999</option>
           <option>Premium — ₹1,799</option>
