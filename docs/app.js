@@ -74,13 +74,14 @@
       +'<div class="actions">'+live+order+'</div></div></article>';
   }).join("");
 
-  /* showcase phone */
-  if(firstFile){$("#showFrame").src=firstFile;$("#phoneCap").textContent=liveTemplates[0].name;}
+  /* showcase phone (embed mode: shows the live invite directly, no scratch/music) */
+  function embed(f){return f+(f.indexOf("?")>-1?"&":"?")+"embed=1";}
+  if(firstFile){$("#showFrame").src=embed(firstFile);$("#phoneCap").textContent=liveTemplates[0].name;}
   $("#chips").innerHTML=liveTemplates.map(function(t,i){return '<button class="chip '+(i===0?'active':'')+'" data-file="'+t.file+'" data-name="'+esc(t.name)+'">'+esc(t.name)+'</button>';}).join("");
   $$("#chips .chip").forEach(function(b){b.onclick=function(){
     $$("#chips .chip").forEach(function(x){x.classList.remove("active");});b.classList.add("active");
     var fr=$("#showFrame");fr.style.opacity="0";
-    setTimeout(function(){fr.src=b.dataset.file;fr.onload=function(){fr.style.opacity="1";};},150);
+    setTimeout(function(){fr.src=embed(b.dataset.file);fr.onload=function(){fr.style.opacity="1";};},150);
     $("#phoneCap").textContent=b.dataset.name;
   };});
 

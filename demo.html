@@ -372,6 +372,8 @@
   var $=function(s,r){return (r||document).querySelector(s)};
   var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
   var WED=new Date("2026-12-12T18:00:00");
+  var EMBED=/[?&]embed=1/.test(location.search);
+  if(EMBED){setTimeout(function(){$("#stage").classList.add("gone");$("#site").classList.add("show");startSite();},30);}
 
   /* ---------- HERO name letter reveal ---------- */
   (function(){
@@ -434,7 +436,7 @@
 
   /* ---------- SITE START ---------- */
   function startSite(){
-    revealObs(); tick(); startMusic(true);
+    revealObs(); tick(); if(!EMBED)startMusic(true);
   }
 
   /* ---------- reveal on scroll ---------- */
@@ -506,6 +508,7 @@
   $("#music").addEventListener("click",function(){
     if(audio.paused){startMusic();} else {audio.pause();$("#music").classList.remove("playing");}
   });
+  document.addEventListener("visibilitychange",function(){if(document.hidden&&!audio.paused){audio.pause();$("#music").classList.remove("playing");}});
 
   /* ---------- custom cursor ---------- */
   var cur=$("#cur"),curR=$("#curR"),mx=0,my=0,rx=0,ry=0;
