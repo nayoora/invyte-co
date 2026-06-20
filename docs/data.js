@@ -7,6 +7,10 @@ window.SITE = {
   whatsapp: "919097099993",
   email: "hello@theinvyteco.com",
   instagram: "https://www.instagram.com/theinvyteco",
+  // >>> FREE email leads: get a key at https://web3forms.com (enter your email,
+  //     they email you an access key). Paste it here and every order form
+  //     submission is emailed to you for free. Leave "" to use WhatsApp only.
+  web3formsKey: "",
 
   templates: [
     {

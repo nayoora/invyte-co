@@ -125,10 +125,23 @@
   il.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Wedding Invitation Templates","itemListElement":S.templates.map(function(t,i){return{"@type":"ListItem","position":i+1,"name":t.name+" — "+t.tagline};})});
   document.head.appendChild(il);
 
-  /* order */
+  /* order — emails you the lead (free, via Web3Forms) AND opens WhatsApp */
+  $("#emailBtn").href="mailto:"+S.email+"?subject="+encodeURIComponent("Wedding invitation enquiry")+"&body="+encodeURIComponent("Hi, I'd like to order a wedding invitation. My wedding date is: ");
+  $("#instaBtn").href=S.instagram;
   $("#orderForm").addEventListener("submit",function(e){
     e.preventDefault();var d=Object.fromEntries(new FormData(e.target));
-    var msg="Namaste! I'd like to order a wedding invitation.\nName: "+d.name+"\nWhatsApp: "+d.phone+"\nWedding date: "+d.date+"\nPlan: "+(d.plan||"-");
+    var msg="Namaste! I'd like to order a wedding invitation.\nName: "+d.name+"\nWhatsApp: "+d.phone+(d.email?"\nEmail: "+d.email:"")+"\nWedding date: "+d.date+"\nPlan: "+(d.plan||"-");
+    /* free email lead */
+    if(S.web3formsKey){
+      try{
+        var fd=new FormData();fd.append("access_key",S.web3formsKey);
+        fd.append("subject","New wedding invite lead — "+(d.name||""));
+        fd.append("from_name","The Invyte Co. Website");
+        fd.append("Name",d.name||"");fd.append("WhatsApp",d.phone||"");fd.append("Email",d.email||"");
+        fd.append("Wedding date",d.date||"");fd.append("Plan",d.plan||"");
+        fetch("https://api.web3forms.com/submit",{method:"POST",body:fd}).catch(function(){});
+      }catch(x){}
+    }
     $("#orderThanks").hidden=false;burst();
     setTimeout(function(){window.open(waLink(msg),"_blank");},500);e.target.reset();
   });
