@@ -43,11 +43,17 @@ body::before{content:"";position:fixed;inset:0;z-index:-2;background:
 .logo .wm .t2 b{color:var(--gold-dk);font-weight:600}
 
 /* ---------- BUTTONS ---------- */
-.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;padding:14px 28px;border-radius:50px;
+.btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;padding:14px 28px;border-radius:50px;position:relative;overflow:hidden;
   font-family:var(--f-body);font-weight:500;letter-spacing:.04em;font-size:13px;transition:transform .25s var(--ease),box-shadow .3s,background .3s}
 .btn.solid{color:#fff;background:var(--ink);box-shadow:0 14px 30px rgba(36,29,22,.25)}
 .btn.solid:hover{transform:translateY(-3px);background:#000}
 .btn.gold{color:#2a1d08;background:linear-gradient(92deg,#a6772f,#e3c483,#a6772f);background-size:200%;box-shadow:0 14px 32px rgba(184,137,63,.4)}
+.btn.gold::after{content:"";position:absolute;top:0;left:-60%;width:38%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s var(--ease,ease)}
+.btn.gold:hover::after{left:150%}
+.trust-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:50px;padding:7px 15px;font-size:12.5px;font-weight:500;color:var(--ink);box-shadow:0 8px 22px rgba(80,55,20,.1);margin-bottom:16px}
+.trust-pill .stars{color:var(--gold);letter-spacing:1px}
+.price-badge{position:absolute;z-index:3;top:16px;right:14px;background:linear-gradient(92deg,#a6772f,#e3c483);color:#2a1d08;font-size:12px;font-weight:600;padding:8px 14px;border-radius:30px;box-shadow:0 10px 22px rgba(40,25,5,.35);transform:rotate(2deg)}
+.price-badge b{font-family:var(--f-display);font-size:16px;margin-left:2px}
 .btn.gold:hover{background-position:right;transform:translateY(-3px)}
 .btn.ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
 .btn.ghost:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
