@@ -1,7 +1,7 @@
 /* ============================================================
    The Invyte Co. — Storefront (modern luxe redesign)
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Great+Vibes&family=Jost:wght@300;400;500;600&family=Tiro+Devanagari+Hindi&display=swap');
 
 :root{
   --bg:#faf5ec; --bg-2:#f3ebdb; --card:#fffdf8;
@@ -110,6 +110,15 @@ h2{font-family:var(--f-display);font-weight:500;font-size:clamp(32px,5.5vw,58px)
 .mini .std{margin-top:4px;font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-dk)}
 .mini .dots{display:flex;gap:5px;margin-top:6px}
 .mini .dots i{width:9px;height:9px;border-radius:50%;display:block}
+/* cover style variants */
+.mini .ov{font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;color:var(--soft)}
+.mini.modern{background:#fffdf8}
+.mini.modern .nm{font-weight:500;letter-spacing:.01em;font-size:clamp(20px,2.6vw,30px)}
+.mini .ln{width:34px;height:1px;margin:6px 0}
+.mini.arch .archframe{width:52%;aspect-ratio:3/4;max-height:44%;border-radius:60px 60px 8px 8px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--f-head);font-weight:700;font-size:1.5rem;border:1px solid rgba(255,255,255,.45);box-shadow:0 8px 20px rgba(0,0,0,.18);margin-bottom:4px}
+.mini.floral .scr{font-family:'Great Vibes',cursive;font-size:1.7rem;line-height:1}
+.mini.floral .fdiv{font-size:.85rem;margin:2px 0}
+.mini.floral .nm{font-size:1.15rem}
 
 /* template grid */
 .tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px;margin-top:50px}
@@ -174,10 +183,12 @@ h2{font-family:var(--f-display);font-weight:500;font-size:clamp(32px,5.5vw,58px)
 .price .btn{width:100%;justify-content:center}
 .addons{max-width:1000px;margin:46px auto 0;text-align:center}
 .addons h3{font-family:var(--f-display);font-weight:500;font-size:23px;margin-bottom:18px}
-.addon-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.addon{padding:11px 18px;border-radius:30px;border:1px solid var(--line);background:var(--card);font-size:14px;transition:.3s}
-.addon:hover{border-color:var(--gold);transform:translateY(-3px)}
-.addon b{color:var(--gold-dk);margin-left:8px}
+.addon-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.addon{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:4px;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:.3s}
+.addon:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 18px 40px rgba(80,55,20,.1)}
+.addon .t{font-family:var(--f-display);font-size:18px;font-weight:500}
+.addon .d{font-size:13px;color:var(--soft);line-height:1.5}
+.addon b{margin-top:6px;color:var(--gold-dk);font-weight:600;font-size:15px}
 
 /* testimonials */
 .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:50px}

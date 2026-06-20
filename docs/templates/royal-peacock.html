@@ -10,7 +10,7 @@
 <meta property="og:description" content="Tap to open our royal digital wedding invitation. Scratch to reveal the date!" />
 <meta name="twitter:card" content="summary_large_image" />
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&family=Rozha+One&family=Tiro+Devanagari+Hindi&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&family=Great+Vibes&family=Rozha+One&family=Playfair+Display:wght@500;600;700&family=Tiro+Devanagari+Hindi&display=swap');
 
   :root{
     --maroon:#123c72; --maroon-dk:#0a2447; --red:#1d5aa0;
@@ -19,7 +19,7 @@
     --pink:#2b7fb0;
     --ivory:#fcf4e6; --ivory-2:#f5e9d2; --tint-teal:#eef4f1; --tint-rose:#f8eee6;
     --ink:#2a1410; --soft:#7c6a55;
-    --f-head:'Cormorant Garamond', Georgia, serif;
+    --f-head:'Playfair Display', Georgia, serif;
     --f-body:'Jost', system-ui, sans-serif;
     --f-script:'Great Vibes', cursive;
     --f-dev:'Tiro Devanagari Hindi', serif;
@@ -248,6 +248,17 @@
   footer .by{margin-top:22px;font-size:12px;color:var(--soft)}footer .by b{color:var(--maroon)}
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 .w{opacity:1;transform:none}.divider path{stroke-dashoffset:0}}
+  @media(max-width:600px){
+    section{padding-left:18px;padding-right:18px}
+    .hero{padding:92px 18px 64px}
+    .hero .om{width:64px;height:64px}
+    .families,.couple{gap:18px}
+    .fam,.arch{width:100%;max-width:360px;min-width:0}
+    .cd{gap:10px}.cd .b{min-width:66px;padding:16px 8px}
+    .ev{padding:28px 20px}
+    .invite{padding:26px 18px 30px}
+    .tlrow{padding-right:0}
+  }
 </style>
 </head>
 <body>

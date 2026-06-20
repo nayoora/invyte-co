@@ -26,18 +26,38 @@
   if($("#heroDemo"))$("#heroDemo").href=firstFile;
   if($("#footDemo"))$("#footDemo").href=firstFile;
 
-  /* mini invitation thumbnail markup */
+  /* mini invitation thumbnail markup — different design per template */
   function miniCover(t){
     var c1=t.palette[0],c2=t.palette[1],c3=t.palette[2]||"#b8893f";
-    return '<div class="mini" style="--c1:'+c1+';--c2:'+c2+'">'
-      +'<div class="topbar"></div>'
+    var base='style="--c1:'+c1+';--c2:'+c2+'"';
+    var dots='<div class="dots"><i style="background:'+c1+'"></i><i style="background:'+c2+'"></i><i style="background:'+c3+'"></i></div>';
+    var st=t.style||"royal";
+    if(st==="modern"){
+      return '<div class="mini modern" '+base+'><div class="topbar"></div>'
+        +'<div class="ov">The Wedding Of</div>'
+        +'<div class="nm" style="color:'+c1+'">Aarav<br>Diya</div>'
+        +'<div class="ln" style="background:'+c1+'"></div>'
+        +'<div class="dt">12 . 12 . 2026</div>'+dots+'</div>';
+    }
+    if(st==="arch"){
+      return '<div class="mini arch" '+base+'><div class="topbar"></div>'
+        +'<div class="archframe" style="background:linear-gradient(155deg,'+c1+','+c2+')"><span>A&amp;D</span></div>'
+        +'<div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div>'
+        +'<div class="dt">12 · 12 · 2026</div>'+dots+'</div>';
+    }
+    if(st==="floral"){
+      return '<div class="mini floral" '+base+'><div class="topbar"></div>'
+        +'<div class="scr" style="color:'+c1+'">Save the Date</div>'
+        +'<div class="fdiv" style="color:'+c3+'">&#10047;</div>'
+        +'<div class="nm" style="color:'+c1+'">Aarav &amp; Diya</div>'
+        +'<div class="dt">12 · 12 · 2026</div>'+dots+'</div>';
+    }
+    return '<div class="mini royal" '+base+'><div class="topbar"></div>'
       +'<svg class="om" style="color:'+c3+'"><use href="#om"/></svg>'
       +'<div class="pre dev">सादर आमंत्रण</div>'
       +'<div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div>'
       +'<div class="dt">12 · 12 · 2026</div>'
-      +'<div class="std">'+esc(t.tagline)+'</div>'
-      +'<div class="dots"><i style="background:'+c1+'"></i><i style="background:'+c2+'"></i><i style="background:'+c3+'"></i></div>'
-      +'</div>';
+      +'<div class="std">'+esc(t.tagline)+'</div>'+dots+'</div>';
   }
 
   /* templates */
@@ -87,7 +107,7 @@
       +'<ul>'+p.perks.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>'
       +'<a class="btn '+(p.popular?'gold':'ghost')+'" target="_blank" rel="noopener" href="'+waLink("Hi! I'd like the "+p.name+" plan (₹"+p.price+"). Please help me get started.")+'">Choose '+esc(p.name)+'</a></div>';
   }).join("");
-  $("#addonRow").innerHTML=S.addons.map(function(a){return '<div class="addon">'+esc(a.t)+'<b>₹'+esc(a.p)+'</b></div>';}).join("");
+  $("#addonRow").innerHTML=S.addons.map(function(a){return '<div class="addon"><span class="t">'+esc(a.t)+'</span>'+(a.d?'<span class="d">'+esc(a.d)+'</span>':'')+'<b>+ ₹'+esc(a.p)+'</b></div>';}).join("");
 
   /* testimonials */
   $("#testiGrid").innerHTML=S.testimonials.map(function(t){return '<div class="testi rv"><div class="stars">★★★★★</div><p class="q">“'+esc(t.q)+'”</p><p class="who"><b>'+esc(t.n)+'</b> · '+esc(t.r)+'</p></div>';}).join("");
@@ -98,6 +118,11 @@
   var ld=document.createElement("script");ld.type="application/ld+json";
   ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:S.faqs.map(function(f){return{"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}};})});
   document.head.appendChild(ld);
+
+  /* ItemList of templates for SEO */
+  var il=document.createElement("script");il.type="application/ld+json";
+  il.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Wedding Invitation Templates","itemListElement":S.templates.map(function(t,i){return{"@type":"ListItem","position":i+1,"name":t.name+" — "+t.tagline};})});
+  document.head.appendChild(il);
 
   /* order */
   $("#orderForm").addEventListener("submit",function(e){
