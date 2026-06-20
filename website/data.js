@@ -114,17 +114,17 @@ window.SITE = {
   ],
 
   pricing: [
-    { name: "Basic", price: "4,999", popular: false, perks: ["1 single-event invite", "Save the Date / Engagement", "RSVP collection", "Mobile-first design", "WhatsApp ready"] },
-    { name: "Premium", price: "6,999", popular: false, perks: ["Up to 3 functions", "Gallery + live countdown", "Scratch reveal", "QR invite", "Background music"] },
-    { name: "Luxury", price: "9,999", popular: true, perks: ["Full 6+ function suite", "Love story + timeline", "Family blessings section", "Digital shagun (UPI)", "Priority 48-hr delivery"] },
-    { name: "Signature", price: "14,999", popular: false, perks: ["Everything in Luxury", "Custom colours & fonts", "Custom domain (1 yr)", "Personalised guest links", "Dedicated designer"] },
+    { name: "Basic", price: "999", popular: false, perks: ["1 single-event invite", "Save the Date / Engagement", "RSVP collection", "Mobile-first design", "WhatsApp ready"] },
+    { name: "Premium", price: "1,799", popular: false, perks: ["Up to 3 functions", "Gallery + live countdown", "Scratch reveal", "QR invite", "Background music"] },
+    { name: "Luxury", price: "2,999", popular: true, perks: ["Full 6+ function suite", "Love story + timeline", "Family blessings section", "Digital shagun (UPI)", "48-hr priority delivery"] },
+    { name: "Signature", price: "4,999", popular: false, perks: ["Everything in Luxury", "Custom colours & fonts", "Custom domain (1 yr)", "Personalised guest links", "Dedicated designer"] },
   ],
 
   addons: [
-    { t: "Custom Domain", p: "499" }, { t: "Premium Music", p: "999" },
-    { t: "Additional Function", p: "999" }, { t: "Video Invite", p: "1,499" },
-    { t: "Guest Photo Gallery", p: "999" }, { t: "Digital Shagun", p: "1,499" },
-    { t: "Per-Guest Links", p: "1,499" }, { t: "Wedding Album Site", p: "2,999" },
+    { t: "Custom Domain", p: "299" }, { t: "Premium Music", p: "299" },
+    { t: "Additional Function", p: "399" }, { t: "Video Invite", p: "699" },
+    { t: "Guest Photo Gallery", p: "399" }, { t: "Digital Shagun", p: "499" },
+    { t: "Per-Guest Links", p: "699" }, { t: "Wedding Album Site", p: "1,499" },
   ],
 
   steps: [
