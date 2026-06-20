@@ -9,6 +9,10 @@
   var waBase="https://wa.me/"+S.whatsapp;
   function waLink(msg){return waBase+"?text="+encodeURIComponent(msg||"Hi! I'd like to know more about your wedding invitations.");}
 
+  /* reveal-on-scroll observer (defined first so template render can use it) */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+  function observe(){ $$(".rv:not(.in)").forEach(function(el){io.observe(el);}); }
+
   window.addEventListener("load",function(){setTimeout(function(){$("#loader").classList.add("done");},450);});
   $("#yr").textContent=new Date().getFullYear();
 
@@ -17,73 +21,63 @@
   $("#burger").onclick=function(){$("#nlinks").classList.toggle("open");};
   $$("#nlinks a").forEach(function(a){a.onclick=function(){$("#nlinks").classList.remove("open");};});
 
-  /* whatsapp links */
+  /* whatsapp + demo links */
   $$("[data-wa]").forEach(function(el){el.href=waLink(el.getAttribute("data-wa"));});
-  $("#waFab").href=waLink("Hi! I'd like to order a wedding invitation.");
-
+  if($("#waFab"))$("#waFab").href=waLink("Hi! I'd like to order a wedding invitation.");
   var liveTemplates=S.templates.filter(function(t){return t.file;});
   var firstFile=liveTemplates[0]?liveTemplates[0].file:"";
   if($("#heroDemo"))$("#heroDemo").href=firstFile;
   if($("#footDemo"))$("#footDemo").href=firstFile;
 
-  /* mini invitation thumbnail markup — different design per template */
+  /* mini invitation thumbnail — different cover design per template */
   function miniCover(t){
     var c1=t.palette[0],c2=t.palette[1],c3=t.palette[2]||"#b8893f";
     var base='style="--c1:'+c1+';--c2:'+c2+'"';
     var dots='<div class="dots"><i style="background:'+c1+'"></i><i style="background:'+c2+'"></i><i style="background:'+c3+'"></i></div>';
     var st=t.style||"royal";
     if(st==="modern"){
-      return '<div class="mini modern" '+base+'><div class="topbar"></div>'
-        +'<div class="ov">The Wedding Of</div>'
-        +'<div class="nm" style="color:'+c1+'">Aarav<br>Diya</div>'
-        +'<div class="ln" style="background:'+c1+'"></div>'
+      return '<div class="mini modern" '+base+'><div class="topbar"></div><div class="ov">The Wedding Of</div>'
+        +'<div class="nm" style="color:'+c1+'">Aarav<br>Diya</div><div class="ln" style="background:'+c1+'"></div>'
         +'<div class="dt">12 . 12 . 2026</div>'+dots+'</div>';
     }
     if(st==="arch"){
       return '<div class="mini arch" '+base+'><div class="topbar"></div>'
         +'<div class="archframe" style="background:linear-gradient(155deg,'+c1+','+c2+')"><span>A&amp;D</span></div>'
-        +'<div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div>'
-        +'<div class="dt">12 · 12 · 2026</div>'+dots+'</div>';
+        +'<div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div><div class="dt">12 · 12 · 2026</div>'+dots+'</div>';
     }
     if(st==="floral"){
-      return '<div class="mini floral" '+base+'><div class="topbar"></div>'
-        +'<div class="scr" style="color:'+c1+'">Save the Date</div>'
-        +'<div class="fdiv" style="color:'+c3+'">&#10047;</div>'
-        +'<div class="nm" style="color:'+c1+'">Aarav &amp; Diya</div>'
+      return '<div class="mini floral" '+base+'><div class="topbar"></div><div class="scr" style="color:'+c1+'">Save the Date</div>'
+        +'<div class="fdiv" style="color:'+c3+'">&#10047;</div><div class="nm" style="color:'+c1+'">Aarav &amp; Diya</div>'
         +'<div class="dt">12 · 12 · 2026</div>'+dots+'</div>';
     }
-    return '<div class="mini royal" '+base+'><div class="topbar"></div>'
-      +'<svg class="om" style="color:'+c3+'"><use href="#om"/></svg>'
-      +'<div class="pre dev">सादर आमंत्रण</div>'
-      +'<div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div>'
-      +'<div class="dt">12 · 12 · 2026</div>'
-      +'<div class="std">'+esc(t.tagline)+'</div>'+dots+'</div>';
+    return '<div class="mini royal" '+base+'><div class="topbar"></div><svg class="om" style="color:'+c3+'"><use href="#om"/></svg>'
+      +'<div class="pre dev">सादर आमंत्रण</div><div class="nm" style="color:'+c1+'">Aarav <em>&amp;</em> Diya</div>'
+      +'<div class="dt">12 · 12 · 2026</div><div class="std">'+esc(t.tagline)+'</div>'+dots+'</div>';
   }
 
-  /* templates */
-  $("#tplGrid").innerHTML=S.templates.map(function(t){
-    var live=t.file?('<a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Live Preview</a>'):'';
-    var order=t.file
-      ?('<a class="btn ghost sm" target="_blank" rel="noopener" href="'+waLink("Hi! I'm interested in the \""+t.name+"\" template. Please share details.")+'">Order</a>')
-      :('<span class="soon">Available on request</span>');
-    var ov=t.file?'<div class="overlay"><a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Open Preview ↗</a></div>':'';
-    return '<article class="tpl rv">'
-      +'<div class="thumb">'+(t.tag?'<span class="badge">'+esc(t.tag)+'</span>':'')+miniCover(t)+ov+'</div>'
-      +'<div class="body"><div class="row"><h3>'+esc(t.name)+'</h3><span class="tier">'+esc(t.tier)+'</span></div>'
-      +'<p>'+esc(t.desc)+'</p>'
-      +'<div class="actions">'+live+order+'</div></div></article>';
-  }).join("");
-
-  /* showcase phone (embed mode: shows the live invite directly, no scratch/music) */
-  function embed(f){return f+(f.indexOf("?")>-1?"&":"?")+"embed=1";}
-  if(firstFile){$("#showFrame").src=embed(firstFile);$("#phoneCap").textContent=liveTemplates[0].name;}
-  $("#chips").innerHTML=liveTemplates.map(function(t,i){return '<button class="chip '+(i===0?'active':'')+'" data-file="'+t.file+'" data-name="'+esc(t.name)+'">'+esc(t.name)+'</button>';}).join("");
-  $$("#chips .chip").forEach(function(b){b.onclick=function(){
-    $$("#chips .chip").forEach(function(x){x.classList.remove("active");});b.classList.add("active");
-    var fr=$("#showFrame");fr.style.opacity="0";
-    setTimeout(function(){fr.src=embed(b.dataset.file);fr.onload=function(){fr.style.opacity="1";};},150);
-    $("#phoneCap").textContent=b.dataset.name;
+  /* templates + tier filter */
+  var TIERS=["All","Basic","Premium","Luxury","Signature","Ultra Premium"];
+  function renderTemplates(tier){
+    var list=(!tier||tier==="All")?S.templates:S.templates.filter(function(t){return t.tier===tier;});
+    $("#tplGrid").innerHTML=list.map(function(t){
+      var live=t.file?('<a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Live Preview</a>'):'';
+      var order=t.file
+        ?('<a class="btn ghost sm" target="_blank" rel="noopener" href="'+waLink("Hi! I'm interested in the \""+t.name+"\" template ("+t.tier+"). Please share details.")+'">Order</a>')
+        :('<span class="soon">On request</span>');
+      var ov=t.file?'<div class="overlay"><a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Open Preview ↗</a></div>':'';
+      return '<article class="tpl rv">'
+        +'<div class="thumb"><span class="badge">'+esc(t.tier)+'</span>'+miniCover(t)+ov+'</div>'
+        +'<div class="body"><div class="row"><h3>'+esc(t.name)+'</h3>'+(t.tag?'<span class="tier">'+esc(t.tag)+'</span>':'')+'</div>'
+        +'<p>'+esc(t.desc)+'</p><div class="actions">'+live+order+'</div></div></article>';
+    }).join("");
+    observe();
+  }
+  $("#filters").innerHTML=TIERS.map(function(t,i){return '<button class="chip '+(i===0?'active':'')+'" data-tier="'+t+'">'+t+'</button>';}).join("");
+  $$("#filters .chip").forEach(function(b){b.onclick=function(){
+    $$("#filters .chip").forEach(function(x){x.classList.remove("active");});b.classList.add("active");
+    renderTemplates(b.dataset.tier);
   };});
+  renderTemplates("All");
 
   /* features */
   var FIC={
@@ -119,19 +113,16 @@
   var ld=document.createElement("script");ld.type="application/ld+json";
   ld.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:S.faqs.map(function(f){return{"@type":"Question",name:f.q,acceptedAnswer:{"@type":"Answer",text:f.a}};})});
   document.head.appendChild(ld);
-
-  /* ItemList of templates for SEO */
   var il=document.createElement("script");il.type="application/ld+json";
   il.textContent=JSON.stringify({"@context":"https://schema.org","@type":"ItemList","name":"Wedding Invitation Templates","itemListElement":S.templates.map(function(t,i){return{"@type":"ListItem","position":i+1,"name":t.name+" — "+t.tagline};})});
   document.head.appendChild(il);
 
-  /* order — emails you the lead (free, via Web3Forms) AND opens WhatsApp */
-  $("#emailBtn").href="mailto:"+S.email+"?subject="+encodeURIComponent("Wedding invitation enquiry")+"&body="+encodeURIComponent("Hi, I'd like to order a wedding invitation. My wedding date is: ");
-  $("#instaBtn").href=S.instagram;
+  /* order — emails you the lead (free, Web3Forms) AND opens WhatsApp */
+  if($("#emailBtn"))$("#emailBtn").href="mailto:"+S.email+"?subject="+encodeURIComponent("Wedding invitation enquiry")+"&body="+encodeURIComponent("Hi, I'd like to order a wedding invitation. My wedding date is: ");
+  if($("#instaBtn"))$("#instaBtn").href=S.instagram;
   $("#orderForm").addEventListener("submit",function(e){
     e.preventDefault();var d=Object.fromEntries(new FormData(e.target));
     var msg="Namaste! I'd like to order a wedding invitation.\nName: "+d.name+"\nWhatsApp: "+d.phone+(d.email?"\nEmail: "+d.email:"")+"\nWedding date: "+d.date+"\nPlan: "+(d.plan||"-");
-    /* free email lead */
     if(S.web3formsKey){
       try{
         var fd=new FormData();fd.append("access_key",S.web3formsKey);
@@ -146,10 +137,7 @@
     setTimeout(function(){window.open(waLink(msg),"_blank");},500);e.target.reset();
   });
 
-  /* reveal */
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
-  $$(".rv").forEach(function(el){io.observe(el);});
+  observe();
 
-  /* burst */
   function burst(){var col=["#b8893f","#6a0f1c","#0e5a5e","#b3294e","#e3c483"];for(var i=0;i<70;i++){(function(k){var x=document.createElement("div");x.style.cssText="position:fixed;z-index:999;width:8px;height:13px;top:-20px;pointer-events:none;left:"+Math.random()*100+"vw;background:"+col[k%5]+";border-radius:2px";document.body.appendChild(x);x.animate([{transform:"translateY(0) rotate(0)"},{transform:"translateY(106vh) rotate("+(720*(Math.random()>.5?1:-1))+"deg)"}],{duration:2400+Math.random()*1200,easing:"cubic-bezier(.2,.6,.3,1)"}).onfinish=function(){x.remove();};})(i);}}
 })();

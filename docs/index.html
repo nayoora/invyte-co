@@ -119,8 +119,9 @@
 <section id="templates" class="center">
   <div class="wrap">
     <p class="eyebrow two rv">The Collection</p>
-    <h2 class="rv d1">Designs your guests will screenshot</h2>
-    <p class="sub rv d2">Every template is animated, mobile-first and fully personalised. Tap “Live Preview” to experience the real thing.</p>
+    <h2 class="rv d1">10 designs your guests will screenshot</h2>
+    <p class="sub rv d2">From Basic to Ultra Premium — every design is animated, mobile-first and fully personalised. Tap “Live Preview” to open the real invitation.</p>
+    <div class="filters rv d2" id="filters"></div>
     <div class="tpl-grid" id="tplGrid"></div>
   </div>
 </section>
@@ -131,23 +132,6 @@
     <p class="eyebrow two rv">Ready in 24–48 hours</p>
     <h2 class="rv d1">Simple, from “yes” to live link</h2>
     <div class="steps" id="steps"></div>
-  </div>
-</section>
-
-<!-- SHOWCASE -->
-<section>
-  <div class="wrap showcase">
-    <div class="text">
-      <p class="eyebrow rv">See it live</p>
-      <h2 class="rv d1">Switch designs. Watch it transform.</h2>
-      <p class="sub rv d2">Tap a design below — the phone updates instantly. This is exactly what lands in your guests' WhatsApp.</p>
-      <div class="chips rv d2" id="chips"></div>
-      <a class="btn gold rv d2" href="#order">Order this design →</a>
-    </div>
-    <div class="rv d1">
-      <div class="phone"><div class="notch"></div><iframe id="showFrame" title="Live preview" loading="lazy"></iframe></div>
-      <p class="phone-cap" id="phoneCap"></p>
-    </div>
   </div>
 </section>
 
@@ -210,6 +194,7 @@
             <option>Premium — ₹1,799</option>
             <option>Luxury — ₹2,999</option>
             <option>Signature — ₹4,999</option>
+            <option>Ultra Premium — ₹7,999</option>
           </select>
         </div>
         <button class="btn gold" type="submit">Get My Preview on WhatsApp</button>

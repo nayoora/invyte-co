@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
-<title>Aarav & Diya — Emerald Royal Wedding Invitation</title>
-<meta name="description" content="A rich emerald digital wedding invitation by The Invyte Co. Scratch to reveal the date, events, RSVP & countdown." />
+<title>Aarav & Diya — Emerald Heritage Wedding Invitation</title>
+<meta name="description" content="A royal digital wedding invitation by The Invyte Co. Scratch to reveal the date, view events, RSVP, countdown and more." />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Shubh Vivah — You're Invited 💍" />
 <meta property="og:description" content="Tap to open our royal digital wedding invitation. Scratch to reveal the date!" />
@@ -36,10 +36,11 @@
   a{color:inherit;text-decoration:none}
   /* two-tone backdrop: warm gold top, cool teal bottom */
   body::before{content:"";position:fixed;inset:0;z-index:-3;background:
-    radial-gradient(60vw 50vw at 50% -12%, rgba(240,215,154,.45), transparent 60%),
-    radial-gradient(50vw 55vw at 100% 105%, rgba(14,90,94,.16), transparent 60%),
-    radial-gradient(45vw 45vw at 0% 100%, rgba(106,15,28,.12), transparent 60%),
-    linear-gradient(180deg,#fdf7ea 0%, #f6ecd6 55%, #eef2ee 100%)}
+    radial-gradient(70vw 55vw at 50% -14%, rgba(240,215,154,.55), transparent 62%),
+    radial-gradient(55vw 60vw at 100% 108%, rgba(14,90,94,.20), transparent 60%),
+    radial-gradient(50vw 50vw at 0% 102%, rgba(106,15,28,.16), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Cg fill='none' stroke='%23b8893f' stroke-opacity='.11'%3E%3Cpath d='M23 7c3 7 3 12 0 18-3-6-3-11 0-18Z'/%3E%3Ccircle cx='23' cy='31' r='2.4'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(180deg,#fdf7ea 0%, #f6ecd6 50%, #eef2ee 100%)}
 
   .gold{background:linear-gradient(92deg,#8a6c2f,#f0d79a 42%,#c9a24b 68%,#8a6c2f);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .dev{font-family:var(--f-dev)}
@@ -484,7 +485,7 @@
   function pos(e){var r=cv.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
   function scr(p){ctx.globalCompositeOperation="destination-out";ctx.beginPath();ctx.arc(p.x,p.y,24,0,6.3);ctx.fill();$("#finger").style.display="none";}
   function pct(){var d;try{d=ctx.getImageData(0,0,cv.width,cv.height).data;}catch(e){return 0;}var c=0;for(var i=3;i<d.length;i+=48){if(d[i]===0)c++;}return c/(d.length/48);}
-  function chk(){if(!done&&pct()>0.5){done=true;cv.style.transition="opacity .6s";cv.style.opacity="0";$("#hint").textContent="शुभ विवाह — Save the Date!";$("#enterBtn").classList.add("show");burst();}}
+  function chk(){if(!done&&pct()>0.5){done=true;cv.style.transition="opacity .6s";cv.style.opacity="0";$("#hint").style.display="none";$("#enterBtn").classList.add("show");burst();}}
   function dn(e){drawing=true;scr(pos(e));}function mv(e){if(drawing){e.preventDefault();scr(pos(e));}}function up(){if(drawing){drawing=false;chk();}}
   cv.addEventListener("mousedown",dn);cv.addEventListener("mousemove",mv);addEventListener("mouseup",up);
   cv.addEventListener("touchstart",dn,{passive:false});cv.addEventListener("touchmove",mv,{passive:false});addEventListener("touchend",up);

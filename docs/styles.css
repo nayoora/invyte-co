@@ -122,6 +122,7 @@ h2{font-family:var(--f-display);font-weight:500;font-size:clamp(32px,5.5vw,58px)
 .mini.floral .nm{font-size:1.15rem}
 
 /* template grid */
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:30px auto 0}
 .tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px;margin-top:50px}
 .tpl{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 14px 40px rgba(80,55,20,.08);transition:transform .45s var(--ease),box-shadow .45s;display:flex;flex-direction:column}
 .tpl:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
