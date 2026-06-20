@@ -213,9 +213,15 @@
 
   @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.hero h1 span.w{opacity:1;transform:none}}
   @media(max-width:600px){
-    section{padding-left:18px;padding-right:18px}
-    .person{width:200px}
-    .cd .box{min-width:74px;padding:16px 10px}
+    section{padding:62px 18px}
+    .hero h1{font-size:clamp(46px,17vw,78px)}
+    .couple{flex-direction:column;gap:14px}
+    .person{width:min(240px,80vw)}
+    .amp{font-size:44px}
+    .events{gap:14px}
+    .cd{gap:10px}.cd .box{min-width:70px;padding:16px 8px}
+    .cd .box span{font-size:36px}
+    form.rsvp{padding:26px 20px}
   }
 </style>
 </head>
