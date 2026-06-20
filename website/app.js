@@ -64,9 +64,11 @@
       var order=t.file
         ?('<a class="btn ghost sm" target="_blank" rel="noopener" href="'+waLink("Hi! I'm interested in the \""+t.name+"\" template ("+t.tier+"). Please share details.")+'">Order</a>')
         :('<span class="soon">On request</span>');
-      var ov=t.file?'<div class="overlay"><a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Open Preview ↗</a></div>':'';
+      var ov=t.file?'<div class="overlay"><a class="btn gold sm" target="_blank" rel="noopener" href="'+t.file+'">Open Preview ↗</a></div>':'<div class="overlay"><span class="soon-ov">On request</span></div>';
+      var photo=t.img?'<img class="tpl-img" src="'+t.img+'" alt="'+esc(t.name)+' — Indian wedding invitation" loading="lazy" onerror="this.remove()">':'';
       return '<article class="tpl rv">'
-        +'<div class="thumb"><span class="badge">'+esc(t.tier)+'</span>'+miniCover(t)+ov+'</div>'
+        +'<div class="thumb"><span class="badge">'+esc(t.tier)+'</span>'
+        +'<div class="ph">'+miniCover(t)+photo+ov+'</div></div>'
         +'<div class="body"><div class="row"><h3>'+esc(t.name)+'</h3>'+(t.tag?'<span class="tier">'+esc(t.tag)+'</span>':'')+'</div>'
         +'<p>'+esc(t.desc)+'</p><div class="actions">'+live+order+'</div></div></article>';
     }).join("");

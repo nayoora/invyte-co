@@ -123,13 +123,27 @@ h2{font-family:var(--f-display);font-weight:500;font-size:clamp(32px,5.5vw,58px)
 
 /* template grid */
 .filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:30px auto 0}
+.tpl .thumb{position:relative}
+.tpl .badge{position:absolute;top:14px;right:14px;z-index:4;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:30px;background:var(--ink);color:#fff;font-weight:500}
+.tpl .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.tpl .ph .mini{position:absolute;inset:0;border:none;border-radius:0}
+.tpl .ph .tpl-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:transform .6s var(--ease)}
+.tpl:hover .ph .tpl-img{transform:scale(1.06)}
+.tpl .ph .overlay{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:center;padding:22px;background:linear-gradient(transparent 40%,rgba(20,12,8,.66));opacity:0;transition:opacity .35s}
+.tpl:hover .ph .overlay{opacity:1}
+.soon-ov{color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.5);padding:8px 16px;border-radius:30px}
+/* hero arched photo */
+.hero-photo{position:relative;z-index:1;width:min(360px,84%);aspect-ratio:4/5;border-radius:210px 210px 22px 22px;overflow:hidden;border:1px solid var(--gold);box-shadow:0 50px 100px rgba(80,55,20,.3)}
+.hero-photo::after{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.4);border-radius:204px 204px 16px 16px;z-index:2;pointer-events:none}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-photo .pcap{position:absolute;left:0;right:0;bottom:0;z-index:3;text-align:center;color:#fff;padding:30px 16px 22px;background:linear-gradient(transparent,rgba(20,8,8,.7))}
+.hero-photo .pcap .dev{font-family:var(--f-dev);font-size:13px;color:var(--gold-lt);display:block}
+.hero-photo .pcap b{font-family:var(--f-display);font-weight:600;font-size:26px;display:block}
+.hero-photo .pcap small{letter-spacing:.2em;font-size:11px;opacity:.85}
 .tpl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px;margin-top:50px}
 .tpl{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 14px 40px rgba(80,55,20,.08);transition:transform .45s var(--ease),box-shadow .45s;display:flex;flex-direction:column}
 .tpl:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
-.tpl .thumb{position:relative;padding:22px 22px 0}
-.tpl .badge{position:absolute;top:14px;right:14px;z-index:3;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:30px;background:var(--ink);color:#fff;font-weight:500}
-.tpl .thumb .overlay{position:absolute;inset:22px 22px 0;border-radius:14px;display:flex;align-items:center;justify-content:center;background:rgba(20,12,8,.45);opacity:0;transition:opacity .3s}
-.tpl:hover .thumb .overlay{opacity:1}
+.tpl .thumb{position:relative}
 .tpl .body{padding:20px 22px 24px;flex:1;display:flex;flex-direction:column}
 .tpl .body .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .tpl .body h3{font-family:var(--f-display);font-weight:500;font-size:22px}

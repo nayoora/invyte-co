@@ -141,7 +141,7 @@
   .hero .mandala{position:absolute;width:min(150vw,1000px);aspect-ratio:1;opacity:.07;color:var(--maroon);animation:spin 70s linear infinite;z-index:0;top:50%;left:50%;translate:-50% -50%}
   @keyframes spin{to{transform:rotate(360deg)}}
   .hero .inner{position:relative;z-index:2;width:100%}
-  .hero .invoc{font-family:var(--f-dev);font-size:clamp(15px,3vw,19px);color:var(--maroon)}
+  .hero-portrait{width:158px;aspect-ratio:3/4;margin:16px auto 4px;border-radius:80px 80px 14px 14px;overflow:hidden;border:1px solid var(--gold);box-shadow:0 18px 44px rgba(0,0,0,.2);position:relative}.hero-portrait img{width:100%;height:100%;object-fit:cover}.hero .invoc{font-family:var(--f-dev);font-size:clamp(15px,3vw,19px);color:var(--maroon)}
   .hero .om{width:80px;height:80px;margin:16px auto 6px}
   .hero .pre{font-family:var(--f-script);font-size:clamp(28px,6vw,46px);color:var(--teal);line-height:1.2;margin-bottom:2px}
   .hero h1{font-family:var(--f-head);font-weight:700;font-size:clamp(52px,14vw,150px);line-height:1.05;padding:6px 0 10px}
@@ -223,7 +223,7 @@
   .gtile{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;display:flex;align-items:flex-end;padding:20px;color:#fff;box-shadow:0 20px 44px rgba(106,15,28,.16);transition:transform .5s var(--ease)}
   .gtile:hover{transform:scale(1.03)}
   .gtile::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent 36%,rgba(30,8,8,.72))}
-  .gtile span{position:relative;font-family:var(--f-head);font-weight:600;font-size:22px}
+  .gtile .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.gtile::before{z-index:1}.gtile span{position:relative;z-index:2;font-family:var(--f-head);font-weight:600;font-size:22px}
   .g1{background:linear-gradient(150deg,#9c4a1f,#c9a24b)}
   .g2{background:linear-gradient(150deg,#0e5a5e,#7bc0bf)}
   .g3{background:linear-gradient(150deg,#8a6c2f,#f0d79a)}
@@ -343,7 +343,7 @@
       <div class="toran" id="toran"></div>
       <p class="invoc">॥ श्री गणेशाय नमः ॥</p>
       <svg class="om" style="color:#c9a24b"><use href="#om"/></svg>
-      <p class="pre">Shubh Vivah</p>
+      <p class="pre">Shubh Vivah</p><div class="hero-portrait"><img loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1519741497674-611481863552?w=520&q=65&auto=format&fit=crop" alt="Wedding couple"></div>
       <h1 id="heroName"></h1>
       <p class="meta">Saturday · 12 December 2026 · Udaipur</p>
       <p class="hashtag">#AaravWedsDiya</p>
@@ -420,12 +420,12 @@
       <p class="label rv">यादें</p>
       <h2 class="rv d1">Cherished Moments</h2>
       <div class="gal">
-        <div class="gtile g1 rv"><span>The first meeting</span></div>
-        <div class="gtile g2 rv d1"><span>Jaipur, 2022</span></div>
-        <div class="gtile g3 rv d2"><span>Roka ceremony</span></div>
-        <div class="gtile g4 rv"><span>Family blessings</span></div>
-        <div class="gtile g5 rv d1"><span>The engagement</span></div>
-        <div class="gtile g6 rv d2"><span>Forever begins</span></div>
+        <div class="gtile g1 rv"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=500&q=60&auto=format&fit=crop"><span>The first meeting</span></div>
+        <div class="gtile g2 rv d1"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&q=60&auto=format&fit=crop"><span>Jaipur, 2022</span></div>
+        <div class="gtile g3 rv d2"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=60&auto=format&fit=crop"><span>Roka ceremony</span></div>
+        <div class="gtile g4 rv"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&q=60&auto=format&fit=crop"><span>Family blessings</span></div>
+        <div class="gtile g5 rv d1"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&q=60&auto=format&fit=crop"><span>The engagement</span></div>
+        <div class="gtile g6 rv d2"><img class="gimg" loading="lazy" onerror="this.remove()" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&q=60&auto=format&fit=crop"><span>Forever begins</span></div>
       </div>
     </div>
   </section>
