@@ -68,7 +68,7 @@
   }
 
   /* templates + tier filter */
-  var TIERS=["All","Basic","Premium","Luxury","Signature","Ultra Premium"];
+  var TIERS=["All","Basic","Premium","Luxury"];
   function renderTemplates(tier){
     var list=(!tier||tier==="All")?S.templates:S.templates.filter(function(t){return t.tier===tier;});
     $("#tplGrid").innerHTML=list.map(function(t){
