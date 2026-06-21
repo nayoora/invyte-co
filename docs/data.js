@@ -1,24 +1,17 @@
 /* ============================================================
    The Invyte Co. — Storefront content
+   Images are real Indian-wedding photos hosted locally in /img
+   (sourced from Wikimedia Commons, freely licensed).
    ============================================================ */
 window.SITE = {
   whatsapp: "919097099993",
   email: "hello@theinvyteco.com",
   instagram: "https://www.instagram.com/theinvyteco",
-  // FREE email leads: get a key at https://web3forms.com and paste it here.
   web3formsKey: "",
 
   gallery: [
-    "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=500&q=60&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=500&q=60&auto=format&fit=crop"
+    "img/hero.jpg", "img/w1.jpg", "img/w2.jpg", "img/w3.jpg", "img/w4.jpg",
+    "img/w5.jpg", "img/w6.jpg", "img/w7.jpg", "img/w8.jpg", "img/w9.jpg"
   ],
 
   trust: [
@@ -31,34 +24,34 @@ window.SITE = {
   templates: [
     { name: "Shubh Vivah — Royal", tagline: "With Love Story", cat: "Wedding", tier: "Signature", tag: "Bestseller", style: "royal",
       desc: "Ornate maroon & teal with mandala, marigold toran, diyas, scratch-reveal date, love story, timeline, blessings & RSVP.",
-      file: "../indian-wedding-with-story.html", img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=900&q=70&auto=format&fit=crop", palette: ["#6a0f1c","#0e5a5e","#c9a24b"] },
+      file: "templates/indian-wedding-with-story.html", img: "img/w1.jpg", palette: ["#6a0f1c","#0e5a5e","#c9a24b"] },
     { name: "Emerald Heritage", tagline: "Green · Wine · Gold", cat: "Wedding", tier: "Ultra Premium", tag: "Ultra", style: "modern",
       desc: "Deep emerald with wine & gold and a refined Marcellus typeface. Our most luxurious, timeless heritage design.",
-      file: "../royal-emerald.html", img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=900&q=70&auto=format&fit=crop", palette: ["#0f5132","#7a1f3a","#c9a24b"] },
+      file: "templates/royal-emerald.html", img: "img/w2.jpg", palette: ["#0f5132","#7a1f3a","#c9a24b"] },
     { name: "Peacock Royal", tagline: "Blue · Teal · Gold", cat: "Wedding", tier: "Signature", tag: "New", style: "arch",
       desc: "Regal peacock-blue with a Playfair display face and arched portraits. Bold, contemporary and grand.",
-      file: "../royal-peacock.html", img: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=900&q=70&auto=format&fit=crop", palette: ["#123c72","#0e5a5e","#c9a24b"] },
+      file: "templates/royal-peacock.html", img: "img/w3.jpg", palette: ["#123c72","#0e5a5e","#c9a24b"] },
     { name: "Wine & Sage", tagline: "Burgundy · Green · Gold", cat: "Wedding", tier: "Signature", tag: "", style: "modern",
       desc: "Rich wine paired with soft sage and gold. Sophisticated, warm and unmistakably premium.",
-      file: "../royal-wine.html", img: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=900&q=70&auto=format&fit=crop", palette: ["#5c1a2b","#2f5d3a","#c9a24b"] },
+      file: "templates/royal-wine.html", img: "img/w4.jpg", palette: ["#5c1a2b","#2f5d3a","#c9a24b"] },
     { name: "Royal Purple", tagline: "Purple · Teal · Gold", cat: "Wedding", tier: "Premium", tag: "", style: "royal",
       desc: "Majestic royal purple with teal and gold accents — regal, vibrant and full of celebration.",
-      file: "../royal-purple.html", img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=900&q=70&auto=format&fit=crop", palette: ["#4a2370","#0e5a5e","#c9a24b"] },
+      file: "templates/royal-purple.html", img: "img/w5.jpg", palette: ["#4a2370","#0e5a5e","#c9a24b"] },
     { name: "Royal Blue Classic", tagline: "Navy · Teal · Gold", cat: "Wedding", tier: "Luxury", tag: "", style: "arch",
       desc: "Deep navy and gold for a classic, stately wedding look. Elegant and effortlessly refined.",
-      file: "../royal-navy.html", img: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900&q=70&auto=format&fit=crop", palette: ["#1b2a6b","#0e5a5e","#c9a24b"] },
+      file: "templates/royal-navy.html", img: "img/w6.jpg", palette: ["#1b2a6b","#0e5a5e","#c9a24b"] },
     { name: "Rani Pink Royal", tagline: "Magenta · Purple · Gold", cat: "Wedding", tier: "Premium", tag: "Trending", style: "floral",
       desc: "Vibrant rani-pink & royal purple with a romantic, floral feel. A glamorous big-fat-Indian-wedding look.",
-      file: "../royal-rani-pink.html", img: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=900&q=70&auto=format&fit=crop", palette: ["#a3164f","#5a2b6e","#c9a24b"] },
+      file: "templates/royal-rani-pink.html", img: "img/w7.jpg", palette: ["#a3164f","#5a2b6e","#c9a24b"] },
     { name: "Shubh Vivah — Traditional", tagline: "Without Love Story", cat: "Wedding", tier: "Luxury", tag: "For families", style: "royal",
       desc: "Royal design, family-first. No romance sections — leads with blessings. Ideal for traditional families.",
-      file: "../indian-wedding-no-story.html", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=900&q=70&auto=format&fit=crop", palette: ["#0e5a5e","#6a0f1c","#c9a24b"] },
+      file: "templates/indian-wedding-no-story.html", img: "img/w8.jpg", palette: ["#0e5a5e","#6a0f1c","#c9a24b"] },
     { name: "Terracotta Boho", tagline: "Rust · Teal · Gold", cat: "Wedding", tier: "Basic", tag: "", style: "floral",
       desc: "Earthy terracotta and teal — a warm, boho-chic palette perfect for day & haldi celebrations.",
-      file: "../royal-rust.html", img: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=900&q=70&auto=format&fit=crop", palette: ["#9c4a1f","#0e5a5e","#c9a24b"] },
+      file: "templates/royal-rust.html", img: "img/w9.jpg", palette: ["#9c4a1f","#0e5a5e","#c9a24b"] },
     { name: "Ivory Minimal", tagline: "Modern Minimal", cat: "Wedding", tier: "Basic", tag: "", style: "modern",
       desc: "Clean editorial ivory & gold with a cinematic envelope reveal. Minimal, modern and Instagram-worthy.",
-      file: "../demo.html", img: "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=900&q=70&auto=format&fit=crop", palette: ["#b08d4f","#9a7b3f","#d8be86"] },
+      file: "templates/demo.html", img: "img/hero.jpg", palette: ["#b08d4f","#9a7b3f","#d8be86"] },
   ],
 
   features: [
