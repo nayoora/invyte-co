@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0a12" />
+  <title>Build Your Wedding Invite — The Invyte Co.</title>
+  <meta name="description" content="Create your own luxury animated wedding website in minutes. Pick a template, add your details, preview live and publish." />
+  <meta name="robots" content="noindex, follow" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .build{min-height:100vh;display:grid;grid-template-columns:1fr 420px;gap:0}
+    .build-main{padding:90px 5vw 120px;max-width:760px}
+    .steps-bar{display:flex;gap:8px;margin-bottom:30px;flex-wrap:wrap}
+    .sbar{flex:1;min-width:90px;text-align:center;padding:10px;border-radius:12px;border:1px solid var(--line);font-size:12px;letter-spacing:.5px;color:var(--muted)}
+    .sbar.active{background:var(--gold);color:#2a1d08;border-color:var(--gold)}
+    .sbar.done{border-color:var(--gold);color:var(--gold)}
+    .wz{display:none;animation:fade .4s}.wz.active{display:block}
+    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1}}
+    .wz h2{font-family:var(--f-head);font-size:clamp(30px,5vw,46px);margin-bottom:6px}
+    .wz .lead{margin-bottom:26px}
+    .tpl-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+    .pick{border:2px solid var(--line);border-radius:16px;overflow:hidden;cursor:pointer;background:var(--card);transition:.25s;position:relative}
+    .pick:hover{transform:translateY(-4px)}
+    .pick.sel{border-color:var(--gold);box-shadow:0 0 0 3px rgba(231,201,139,.25)}
+    .pick img{aspect-ratio:4/5;object-fit:cover;width:100%}
+    .pick span{display:block;padding:10px 12px;font-family:var(--f-head);font-size:18px}
+    .pick .check{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:#2a1d08;display:none;align-items:center;justify-content:center;font-size:15px}
+    .pick.sel .check{display:flex}
+    .fld{margin-bottom:16px}
+    .fld label{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .fld input,.fld textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--ink);font-family:inherit;font-size:15px}
+    .fld input:focus,.fld textarea:focus{outline:none;border-color:var(--gold)}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .ev-mini{border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--card)}
+    .ev-mini .grid2{gap:8px}
+    .wz-actions{display:flex;justify-content:space-between;gap:12px;margin-top:30px}
+    .preview-pane{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#08070d;border-left:1px solid var(--line);padding:24px}
+    .pv-phone{width:300px;height:610px;border-radius:42px;background:#05040a;border:10px solid #1b1826;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.6)}
+    .pv-phone iframe{width:100%;height:100%;border:0}
+    .pv-hint{color:var(--muted);font-size:13px;text-align:center;max-width:280px}
+    .pub-box{text-align:center;padding:30px;border:1px solid var(--gold);border-radius:20px;background:linear-gradient(160deg,rgba(231,201,139,.12),rgba(123,92,255,.06))}
+    .link-row{display:flex;gap:8px;margin-top:16px}
+    .link-row input{flex:1;padding:11px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--ink)}
+    @media(max-width:980px){.build{grid-template-columns:1fr}.preview-pane{position:static;height:auto;border-left:none;border-top:1px solid var(--line)}.pv-phone{width:260px;height:520px}}
+  </style>
+</head>
+<body>
+  <nav class="nav scrolled"><a href="index.html" class="logo">The Invyte<span>Co.</span></a>
+    <a href="index.html" class="btn-pill ghost nav-cta" style="margin-left:auto">← Back to site</a></nav>
+
+  <div class="build">
+    <div class="build-main">
+      <div class="steps-bar">
+        <div class="sbar active" data-s="0">1 · Template</div>
+        <div class="sbar" data-s="1">2 · Couple</div>
+        <div class="sbar" data-s="2">3 · Events</div>
+        <div class="sbar" data-s="3">4 · Publish</div>
+      </div>
+
+      <!-- Step 1 -->
+      <section class="wz active" data-step="0">
+        <h2>Choose your style</h2>
+        <p class="lead">Pick a template. You can change colours later.</p>
+        <div class="tpl-pick" id="tplPick"></div>
+        <div class="wz-actions"><span></span><button class="btn-pill primary" data-next>Continue →</button></div>
+      </section>
+
+      <!-- Step 2 -->
+      <section class="wz" data-step="1">
+        <h2>Your details</h2>
+        <p class="lead">This personalises every section instantly.</p>
+        <div class="grid2">
+          <div class="fld"><label>Groom name</label><input id="b_groom" /></div>
+          <div class="fld"><label>Bride name</label><input id="b_bride" /></div>
+        </div>
+        <div class="fld"><label>Tagline</label><input id="b_tagline" /></div>
+        <div class="grid2">
+          <div class="fld"><label>Hashtag</label><input id="b_hashtag" /></div>
+          <div class="fld"><label>Wedding date & time</label><input id="b_date" type="datetime-local" /></div>
+        </div>
+        <div class="fld"><label>Hero / cover image URL (optional)</label><input id="b_cover" placeholder="Leave blank to use template default" /></div>
+        <div class="wz-actions"><button class="btn-pill ghost" data-prev>← Back</button><button class="btn-pill primary" data-next>Continue →</button></div>
+      </section>
+
+      <!-- Step 3 -->
+      <section class="wz" data-step="2">
+        <h2>Your events</h2>
+        <p class="lead">Add the functions guests should know about.</p>
+        <div id="evMiniList"></div>
+        <button class="btn-pill ghost" id="addEvBtn">+ Add event</button>
+        <div class="wz-actions"><button class="btn-pill ghost" data-prev>← Back</button><button class="btn-pill primary" data-next>Continue →</button></div>
+      </section>
+
+      <!-- Step 4 -->
+      <section class="wz" data-step="3">
+        <h2>Ready to publish 🎉</h2>
+        <p class="lead">Your invitation is built. Share the link or send it on WhatsApp.</p>
+        <div class="pub-box">
+          <p style="font-family:var(--f-head);font-size:26px;color:var(--gold)" id="pubNames">—</p>
+          <p style="color:var(--muted)" id="pubMeta">—</p>
+          <div class="link-row"><input id="pubLink" readonly /><button class="btn-pill primary" id="copyLink">Copy</button></div>
+          <div class="wz-actions" style="justify-content:center;flex-wrap:wrap">
+            <a class="btn-pill primary" id="openInvite" target="_blank">Open my invitation ↗</a>
+            <a class="btn-pill ghost" id="waSend" target="_blank">Send on WhatsApp</a>
+          </div>
+          <p class="pv-hint" style="margin-top:14px">Demo saves to this browser. To publish on your own domain with a permanent link, upgrade to a paid plan — we'll host it for you.</p>
+        </div>
+        <div class="wz-actions"><button class="btn-pill ghost" data-prev>← Back</button><a class="btn-pill ghost" href="index.html#pricing">See plans →</a></div>
+      </section>
+    </div>
+
+    <aside class="preview-pane">
+      <div class="pv-phone"><iframe id="pvFrame" title="Live preview"></iframe></div>
+      <p class="pv-hint">Live preview — updates as you build. Tap to interact.</p>
+    </aside>
+  </div>
+
+  <script src="../config.js"></script>
+  <script src="../templates.js"></script>
+  <script src="data.js"></script>
+  <script src="builder.js"></script>
+</body>
+</html>
