@@ -73,7 +73,9 @@ nav.solid{background:rgba(20,13,16,.8);backdrop-filter:blur(14px);box-shadow:0 1
 
 /* HERO — full-screen cinematic */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px clamp(18px,5vw,56px) 90px;overflow:hidden;
-  background:url('img/hero.jpg') center/cover no-repeat;background-color:#1a1014}
+  background:url('img/hero.jpg') center/cover no-repeat;background-color:#1a1014;
+  animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{from{background-size:108%;background-position:50% 48%}to{background-size:122%;background-position:52% 54%}}
 .hero-veil{position:absolute;inset:0;z-index:1;background:
   linear-gradient(180deg,rgba(20,13,16,.72),rgba(20,13,16,.55) 40%,rgba(20,13,16,.92)),
   radial-gradient(70vw 60vw at 50% 40%,rgba(122,18,40,.35),transparent 70%)}
@@ -273,3 +275,12 @@ footer{background:#0f0a0c;border-top:1px solid var(--line);padding:60px clamp(18
 }
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* custom luxury cursor (desktop pointer devices only) */
+@media(hover:hover) and (pointer:fine){
+  .cur-dot,.cur-ring{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;border-radius:50%;mix-blend-mode:screen}
+  .cur-dot{width:7px;height:7px;background:var(--gold-lt);transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .2s}
+  .cur-ring{width:38px;height:38px;border:1px solid rgba(240,212,154,.55);transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),border-color .25s,background .25s}
+  .cur-ring.hot{width:58px;height:58px;border-color:var(--gold);background:rgba(205,162,78,.1)}
+  .cur-dot.hide,.cur-ring.hide{opacity:0}
+}

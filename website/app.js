@@ -117,7 +117,27 @@
 
   observe();
 
-  /* hero gold-dust + marigold petal canvas (premium cinematic motion) */
+  /* luxury custom cursor + magnetic buttons (desktop only) */
+  (function(){
+    if(!matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+    if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    var dot=document.createElement("div"),ring=document.createElement("div");
+    dot.className="cur-dot";ring.className="cur-ring";document.body.appendChild(dot);document.body.appendChild(ring);
+    var mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+    addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;dot.style.left=mx+"px";dot.style.top=my+"px";},{passive:true});
+    addEventListener("mouseleave",function(){dot.classList.add("hide");ring.classList.add("hide");});
+    addEventListener("mouseenter",function(){dot.classList.remove("hide");ring.classList.remove("hide");});
+    (function loop(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.left=rx+"px";ring.style.top=ry+"px";requestAnimationFrame(loop);})();
+    var hot="a,button,.tpl,.chip,.faq-q,input,select,.price,.addon";
+    document.addEventListener("mouseover",function(e){if(e.target.closest(hot))ring.classList.add("hot");});
+    document.addEventListener("mouseout",function(e){if(e.target.closest(hot))ring.classList.remove("hot");});
+    /* magnetic pull on primary buttons */
+    $$(".btn.gold,.btn.glass").forEach(function(b){
+      b.addEventListener("mousemove",function(e){var r=b.getBoundingClientRect();b.style.transform="translate("+((e.clientX-r.left-r.width/2)*.22)+"px,"+((e.clientY-r.top-r.height/2)*.32)+"px)";});
+      b.addEventListener("mouseleave",function(){b.style.transform="";});
+    });
+  })();
+
   (function(){
     var cv=$("#heroParticles"); if(!cv) return;
     if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
